@@ -1,0 +1,32 @@
+.navItem {
+  position: relative;
+
+  a {
+    display: block;
+    padding: 0.5em 1em;
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      background-color: cyan;
+      color: black;
+    }
+  }
+
+  &:hover > .subMenu {
+    display: block;
+  }
+}
+
+.subMenu {
+  display: none; 
+  position: absolute;
+  left: 0;
+  top: 100%;
+  min-width: 200px;
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  z-index: 1000;
+  text-align: left;
+}
+

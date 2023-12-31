@@ -3,8 +3,13 @@ import { LINK_FIELDS } from './link'
 export const HEADER = `
   Header {
     navItems {
-      link ${LINK_FIELDS({ disableAppearance: true })}
-		}
+      item {
+        link ${LINK_FIELDS({ disableAppearance: true })}
+        subItems {
+          link ${LINK_FIELDS({ disableAppearance: true })}
+        }
+      }
+    }
   }
 `
 

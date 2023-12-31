@@ -1,6 +1,6 @@
 import type { GlobalConfig } from 'payload/types'
 
-import link from '../fields/link'
+import link from '../fields/link' // Import your custom link field
 
 export const Header: GlobalConfig = {
   slug: 'header',
@@ -11,11 +11,30 @@ export const Header: GlobalConfig = {
     {
       name: 'navItems',
       type: 'array',
-      maxRows: 6,
+      maxRows: 10,
       fields: [
-        link({
-          appearances: false,
-        }),
+        {
+          name: 'item',
+          type: 'group',
+          fields: [
+            link({
+              // Use your custom link field for top-level items
+              appearances: false,
+            }),
+            {
+              name: 'subItems',
+              type: 'array',
+              fields: [
+                link({
+                  // Reuse the same link field for nested items
+                  appearances: false,
+                }),
+                // You can add more fields here if needed for sub-items
+              ],
+            },
+          ],
+        },
+        // Include other fields as necessary
       ],
     },
   ],

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useCallback } from 'react'
-import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
+import { AddressElement, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import { useRouter } from 'next/navigation'
 
 import { Order } from '../../../../payload/payload-types'
@@ -98,6 +98,7 @@ export const CheckoutForm: React.FC<{}> = () => {
   return (
     <form onSubmit={handleSubmit} className={classes.form}>
       {error && <Message error={error} />}
+      <AddressElement options={{ mode: 'shipping' }} />
       <PaymentElement />
       <div className={classes.actions}>
         <Button label="Back to cart" href="/cart" appearance="secondary" />

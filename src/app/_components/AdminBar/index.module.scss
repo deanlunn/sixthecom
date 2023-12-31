@@ -6,7 +6,7 @@
   display: block;
   visibility: hidden;
   opacity: 0;
-  background-color: var(--theme-elevation-100);
+  background-color: black;
   transition: opacity 150ms linear;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .payloadAdminBar {
-  color: var(--theme-text) !important;
+  color: white;
 }
 
 .show {

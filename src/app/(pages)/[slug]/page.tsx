@@ -1,6 +1,8 @@
 import React from 'react'
 import { Metadata } from 'next'
+import Head from 'next/head'
 import { draftMode } from 'next/headers'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import type { Page } from '../../../payload/payload-types'
@@ -8,15 +10,14 @@ import { staticHome } from '../../../payload/seed/home-static'
 import { fetchDoc } from '../../_api/fetchDoc'
 import { fetchDocs } from '../../_api/fetchDocs'
 import { Blocks } from '../../_components/Blocks'
+import { Gutter } from '../../_components/Gutter'
 import { Hero } from '../../_components/Hero'
+import ImageSlider from '../../_components/ImageSlider'
 import { generateMeta } from '../../_utilities/generateMeta'
 
-// Payload Cloud caches all files through Cloudflare, so we don't need Next.js to cache them as well
-// This means that we can turn off Next.js data caching and instead rely solely on the Cloudflare CDN
-// To do this, we include the `no-cache` header on the fetch requests used to get the data for this page
-// But we also need to force Next.js to dynamically render this page on each request for preview mode to work
-// See https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic
-// If you are not using Payload Cloud then this line can be removed, see `../../../README.md#cache`
+import classes from './index.module.scss'
+import { HR } from '../../_components/HR'
+
 export const dynamic = 'force-dynamic'
 
 export default async function Page({ params: { slug = 'home' } }) {
@@ -30,16 +31,8 @@ export default async function Page({ params: { slug = 'home' } }) {
       slug,
       draft: isDraftMode,
     })
-  } catch (error) {
-    // when deploying this template on Payload Cloud, this page needs to build before the APIs are live
-    // so swallow the error here and simply render the page with fallback data where necessary
-    // in production you may want to redirect to a 404  page or at least log the error somewhere
-    // console.error(error)
-  }
+  } catch (error) {}
 
-  // if no `home` page exists, render a static one using dummy content
-  // you should delete this code once you have a home page in the CMS
-  // this is really only useful for those who are demoing this template
   if (!page && slug === 'home') {
     page = staticHome
   }
@@ -50,13 +43,126 @@ export default async function Page({ params: { slug = 'home' } }) {
 
   const { hero, layout } = page
 
+  const featuredCollections = [
+    {
+      id: '1',
+      title: 'The 6th',
+      description: 'The 6th Apparel',
+      imageUrl: '/champion.webp',
+      linkUrl: '/collection1',
+    },
+    {
+      id: '2',
+      title: 'A Little Help',
+      description: 'A Little Help',
+      imageUrl: '/C1.jpeg',
+      linkUrl: '/a-little-help',
+    },
+    {
+      id: '3',
+      title: 'Mirror Image Arts',
+      description: 'Mirror Image Arts',
+      imageUrl: '/C2.webp',
+      linkUrl: '/mirror-image-arts',
+    },
+  ]
+
+  const featuredProducts = [
+    {
+      id: '1',
+      title: 'The 6th Signature Tee Black',
+      description: '$20.00',
+      imageUrl: '/P1.webp',
+      linkUrl: '/product1',
+    },
+    {
+      id: '2',
+      title: 'The 6th Signature Tee Gray',
+      description: '$20.00',
+      imageUrl: '/P2.webp',
+      linkUrl: '/product1',
+    },
+    {
+      id: '3',
+      title: 'Champion Signature Jacket',
+      description: '$52.00',
+      imageUrl: '/P3.webp',
+      linkUrl: '/product1',
+    },
+    {
+      id: '4',
+      title: 'The 6th Signature Long Sleeve',
+      description: '$40.00',
+      imageUrl: '/P4.webp',
+      linkUrl: '/product1',
+    },
+  ]
+
   return (
     <React.Fragment>
-      <Hero {...hero} />
-      <Blocks
-        blocks={layout}
-        disableTopPadding={!hero || hero?.type === 'none' || hero?.type === 'lowImpact'}
-      />
+      {slug === 'home' ? (
+        <>
+          <Head>
+            <title>The 6th Clothing Co.</title>
+            <meta
+              name="description"
+              content="Shop online today for affordable, high-quality apparel and accessories."
+            />
+          </Head>
+          <div className={classes.homeContainer}>
+            <ImageSlider />
+            <Gutter>
+              <h2 className={classes.header}>Featured Collections</h2>
+              <div className={classes.container}>
+                <div className={classes.collectionsContainer}>
+                  {featuredCollections.map(collection => (
+                    <div key={collection.id} className={classes.collectionCard}>
+                      <Link href={collection.linkUrl} passHref>
+                        <div className={classes.collectionLink}>
+                          <img src={collection.imageUrl} alt={collection.title} />
+                          <h5>{collection.title}</h5>
+                        </div>
+                      </Link>
+                      <p>{collection.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <HR />
+              <h2 className={classes.header}>Featured Products</h2>
+              <div className={classes.container}>
+                <div className={classes.productsContainer}>
+                  {featuredProducts.map(product => (
+                    <div key={product.id} className={classes.productCard}>
+                      <Link href={product.linkUrl} passHref>
+                        <div className={classes.collectionLink}>
+                          <img src={product.imageUrl} alt={product.title} />
+                          <h3>{product.title}</h3>
+                        </div>
+                      </Link>
+                      <p>{product.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <HR />
+              <div className={classes.giveMoreSection}>
+                <h2>Give More</h2>
+                <p>Your Purchase Your Power. Our Donation.</p>
+                {/* Additional content and links */}
+              </div>
+            </Gutter>
+          </div>
+        </>
+      ) : (
+        <>
+          <Hero {...hero} />
+          <Blocks
+            blocks={layout}
+            disableTopPadding={!hero || hero?.type === 'none' || hero?.type === 'lowImpact'}
+          />
+        </>
+      )}
     </React.Fragment>
   )
 }

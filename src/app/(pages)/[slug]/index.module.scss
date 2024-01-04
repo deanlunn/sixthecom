@@ -1,0 +1,101 @@
+.featuredCollections, .featuredProducts, .giveMoreSection {
+  margin-bottom: 20px;
+}
+
+.header {
+  display: grid;
+  place-items: center;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.collectionsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 20px;
+}
+
+@media (min-width: 768px) {
+  .collectionsContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.collectionCard {
+  // Reuse the styles from .cause
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 100%;
+  height: auto;
+}
+
+.collectionCard img {
+  // Reuse the styles from .cause img
+  width: 100%;
+  aspect-ratio: 1/1 ;
+  object-fit: cover; // Ensures the image covers the area without distorting aspect ratio
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.collectionCard h3 {
+  // Reuse the styles from .cause h3
+  color: #333;
+}
+
+.collectionCard p {
+  // Reuse the styles from .cause p
+  color: #666;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+
+.productsContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); // Five items per row
+  gap: 20px;
+  margin: 20px;
+}
+
+@media (min-width: 768px) {
+  .productsContainer {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.productCard {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 100%;
+  height: auto;
+}
+
+.productCard img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.productCard h5 {
+  color: #333;
+}
+
+.productCard p {
+  color: #666;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}

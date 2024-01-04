@@ -1,0 +1,44 @@
+.slider {
+  position: relative;
+  width: 100%;
+}
+
+.navButton {
+  position: absolute;
+  color: white;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 2;
+
+  &:first-of-type {
+    left: 10px;
+  }
+
+  &:last-of-type {
+    right: 10px;
+  }
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  transition: opacity 0s;
+
+  &.active {
+    display: block;
+  }
+
+  img {
+    width: 100%;
+    display: block;
+  }
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}

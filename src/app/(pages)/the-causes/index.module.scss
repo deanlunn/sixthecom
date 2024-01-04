@@ -1,0 +1,96 @@
+.container {
+  margin-top: 120px;
+  margin-bottom: 120px;;
+}
+
+.causesContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 20px;
+}
+
+@media (min-width: 768px) {
+  .causesContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.cause {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 100%; /* Ensures the card doesn't exceed the column width */
+  height: auto; /* Height adjusts to content */
+}
+
+.cause img {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+
+
+.cause h3 {
+  color: #333;
+}
+
+.cause p {
+  color: #666;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+
+//BANNER
+
+.banner {
+  position: relative; /* This will contain the absolute positioned image */
+  width: 100%; /* Full width of the viewport */
+  height: 300px; /* Adjust the height as needed */
+  overflow: hidden; /* Ensures no overflow of content */
+  text-align: center;
+  margin-top: 120px;
+}
+
+/* Inside the banner, the Image component should fill this container */
+.banner Image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+//STEPS
+
+.stepsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px;
+}
+
+.step {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
+.step h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.step p {
+  color: #666;
+}

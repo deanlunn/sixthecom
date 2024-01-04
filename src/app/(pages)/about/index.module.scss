@@ -1,0 +1,21 @@
+.aboutContainer {
+  margin: 120px;
+}
+
+.storySection, .missionSection, .teamSection, .communitySection {
+  margin-bottom: 20px;
+}
+
+.imageCard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.grid-item {
+  /* Styles for individual grid items, if needed */
+}
+
+.box {
+  background-color: black;
+}

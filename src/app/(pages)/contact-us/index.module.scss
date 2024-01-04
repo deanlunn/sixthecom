@@ -1,4 +1,8 @@
-@import '../../../_css/common';
+@import '../../_css/common';
+
+.contactContainer {
+  margin: 120px;
+}
 
 .form {
   margin-bottom: var(--base);
@@ -11,12 +15,6 @@
   @include mid-break {
     width: 100%;
   }
-}
-
-.changePassword {
-  all: unset;
-  cursor: pointer;
-  text-decoration: underline;
 }
 
 .submit {

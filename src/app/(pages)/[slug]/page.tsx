@@ -73,7 +73,7 @@ export default async function Page({ params: { slug = 'home' } }) {
       title: 'The 6th Signature Tee Black',
       description: '$20.00',
       imageUrl: '/P1.webp',
-      linkUrl: '/product1',
+      linkUrl: 'the-6th-signature-black-tee',
     },
     {
       id: '2',
@@ -146,12 +146,12 @@ export default async function Page({ params: { slug = 'home' } }) {
                 </div>
               </div>
               <HR />
-              <div className={classes.giveMoreSection}>
-                <h2>Give More</h2>
-                <p>Your Purchase Your Power. Our Donation.</p>
-                {/* Additional content and links */}
-              </div>
             </Gutter>
+            <div className={classes.giveMoreSection}>
+              <h2>Give More</h2>
+              <p>Your Purchase Your Power. Our Donation.</p>
+              {/* Additional content and links */}
+            </div>
           </div>
         </>
       ) : (
